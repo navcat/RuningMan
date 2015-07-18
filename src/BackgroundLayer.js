@@ -5,7 +5,11 @@
 var RuningBgLayer = cc.Layer.extend({
 	ctor: function(){
 		this._super();
-		
+		this.init();
+	},
+	
+	init: function(){
+		this._super();
 		// 添加背景
 		var winSize = cc.director.getWinSize();
 		bg = new cc.Sprite(res.PlayBG_png);

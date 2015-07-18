@@ -114,13 +114,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>runing.png</string>
+            <string>running.png</string>
             <key>size</key>
             <string>{366,60}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:5f1c50ff28aceaaa80bdef79cfde383e:8b0ba647c40ecc0e01c1545769030b07:1d367b55277ff564ba391538d5c38981$</string>
+            <string>$TexturePacker:SmartUpdate:19c3ce7738e0d838e2b9a1a45751e640:8b0ba647c40ecc0e01c1545769030b07:c6f54cd90e73bf73573beb07265492a6$</string>
             <key>textureFileName</key>
-            <string>runing.png</string>
+            <string>running.png</string>
         </dict>
     </dict>
 </plist>
