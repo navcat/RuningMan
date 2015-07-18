@@ -1,0 +1,16 @@
+# pyc文件
+*.bak
+*.pyc
+*.db
+
+# 日志文件、框架文件、运行平台依赖
+/log
+/frameworks
+/runtime
+
+# settings文件
+.settings/
+
+# 以.开头的文件，.gitignore除外
+\.*
+!.gitignore
