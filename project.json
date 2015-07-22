@@ -7,7 +7,8 @@
     "renderMode":0,
     "engineDir":"frameworks/cocos2d-html5",
     "modules":[
-        "cocos2d"
+        "cocos2d",
+        "chipmunk"
     ],
     "jsList":[
         "src/resource.js",
@@ -15,6 +16,7 @@
         "src/AnimationLayer.js",
         "src/BackgroundLayer.js",
         "src/StatusLayer.js",
-        "src/PlayScene.js"
+        "src/PlayScene.js",
+        "src/globals.js"
     ]
 }
