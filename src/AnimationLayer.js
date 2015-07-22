@@ -1,22 +1,31 @@
 
 /**
  * 动画层
+ * 
+ * 实现让奔跑小人不断的重复奔跑动作
+ * 
  */
 var AnimationLayer = cc.Layer.extend({
 	spriteSheet: null,
 	sprite: null,
-	space: null,
+	space: null,    // 物理空间
 	runingAction: null,
+	/**
+	 * 构造方法
+	 * @param space 物理空间 (单例：即整个游戏使用同一个物理空间)
+	 */
 	ctor: function(space){
 		this._super();
 		this.space = space;
 		this.init();
 		
+		// 显示调试信息
 		// this._debugNode = new cc.PhysicsDebugNode(this.space);
 		// this.addChild(this._debugNode, 10);
 	},
 	/**
 	 * 初始化方法
+	 * 通过缓存添加精灵动画
 	 */
 	init: function(){
 		this._super();
@@ -31,7 +40,7 @@ var AnimationLayer = cc.Layer.extend({
 		for(var i = 0; i < 8; i++){
 			var name = "runner" + i + ".png";
 			var frame = cc.spriteFrameCache.getSpriteFrame(name);
-			animFrames.push(frame)
+			animFrames.push(frame);
 		}
 		
 		// 通过精灵帧在一定时间内完成动画
@@ -63,6 +72,7 @@ var AnimationLayer = cc.Layer.extend({
 		this.spriteSheet.addChild(this.sprite);
 
 		/**
+		// 方式二：从缓存添加
 		this.sprite = new cc.Sprite("#runner0.png");
 		this.sprite.attr({
 			x: 80,
@@ -73,6 +83,7 @@ var AnimationLayer = cc.Layer.extend({
 		*/
 		
 		/**
+		// 方式一：手动创建
 		var spritRuner = new cc.Sprite(res.Runner_png);
 		spritRuner.attr({
 			x: 80,
@@ -84,6 +95,12 @@ var AnimationLayer = cc.Layer.extend({
 		**/
 	},
 	
+	/**
+	 * 既然物理body将要不断地向右移动，精灵会和物理body同步它的位置。
+		过了一段时间后，玩家会跑到屏幕外面，就像上一篇教程说的那样。
+		所以我们需要在每帧移动游戏层的x坐标，让它保持在可见的范围内。
+	 * @returns int x坐标
+	 */
 	getEyeX: function(){
 		return this.sprite.getPositionX() - g_runnerStartX;
 	}

@@ -1,7 +1,7 @@
 
+// 菜单层
 var MenuLayer = cc.Layer.extend({
     ctor:function () {
-        //////////////////////////////
         // 调用父类的方法
         this._super();
     },
@@ -43,6 +43,7 @@ var MenuLayer = cc.Layer.extend({
     }
 });
 
+// 菜单场景 
 var MenuScene = cc.Scene.extend({
     onEnter:function () {
         this._super();

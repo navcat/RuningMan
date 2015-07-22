@@ -57,10 +57,11 @@ cc.game.onStart = function(){
     cc.view.adjustViewPort(true);
     // Setup the resolution policy and design resolution size
     // cc.view.setDesignResolutionSize(800, 450, cc.ResolutionPolicy.SHOW_ALL);
+    // 背景图片的大小为640x320，所以我们将窗口大小设置为640x320， 而且自适应屏幕
     cc.view.setDesignResolutionSize(640, 320, cc.ResolutionPolicy.SHOW_ALL);
-    // The game will be resized when browser size change
+    // 当改变浏览器的窗口的大小时，同时缩放游戏界面
     cc.view.resizeWithBrowserSize(true);
-    //load resources
+    // 加载资源，从场景菜单开始
     cc.LoaderScene.preload(g_resources, function () {
     	cc.director.runScene(new MenuScene());
     }, this);
