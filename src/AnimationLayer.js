@@ -39,13 +39,13 @@ var AnimationLayer = cc.Layer.extend({
 		var animFrames = [];
 		for(var i = 0; i < 8; i++){
 			var name = "runner" + i + ".png";
+			// 从缓存中获取帧
 			var frame = cc.spriteFrameCache.getSpriteFrame(name);
 			animFrames.push(frame);
 		}
 		
 		// 通过精灵帧在一定时间内完成动画
 		var animation = new cc.Animation(animFrames, 0.1);
-		
 		// 用一个持续重复动作封装该动画
 		this.runingAction = new cc.RepeatForever(new cc.Animate(animation));
 		
