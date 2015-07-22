@@ -4,7 +4,10 @@ var res = {
 	Start_s_png : "res/start_s.png",
 	PlayBG_png  : "res/PlayBG.png",     // 跑步背景
 	Runner_png  : "res/running.png",		// 奔跑者
-	Running_plist : "res/running.plist" 	// 奔跑者
+	Running_plist : "res/running.plist", 	// 奔跑者
+	map_png: "res/map.png",
+	map00_tmx: "res/map00.tmx",
+	map01_tmx: "res/map01.tmx"
 };
 
 var g_resources = [];

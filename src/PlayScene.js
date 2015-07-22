@@ -3,15 +3,24 @@
  */
 var PlayScene = cc.Scene.extend({
 	space:null,   // 物理边界
+	gameLayer: null,
 	onEnter: function(){
 		this._super();
 		
 		this.initPhysics();
+		this.gameLayer = new cc.Layer();
 		
+		/*
 		this.addChild(new RuningBgLayer());
 		this.addChild(new AnimationLayer(this.space));
 		this.addChild(new StatusLayer());
+		*/
 		
+		this.gameLayer.addChild(new RuningBgLayer(), 0, TagOfLayer.BackGround);
+		this.gameLayer.addChild(new AnimationLayer(this.space), 0, TagOfLayer.Animation);
+		this.addChild(this.gameLayer);
+		this.addChild(new StatusLayer(), 0, TagOfLayer.Status);
+
 		this.scheduleUpdate();
 	},
 	initPhysics: function(){
@@ -30,5 +39,10 @@ var PlayScene = cc.Scene.extend({
 	update:function (dt) {
 		// chipmunk step
 		this.space.step(dt);
+		
+		var animationLayer = this.gameLayer.getChildByTag(TagOfLayer.Animation);
+		var eyeX = animationLayer.getEyeX();
+		
+		this.gameLayer.setPosition(cc.p(-eyeX, 0));
 	}
 });

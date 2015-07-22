@@ -11,6 +11,9 @@ var AnimationLayer = cc.Layer.extend({
 		this._super();
 		this.space = space;
 		this.init();
+		
+		// this._debugNode = new cc.PhysicsDebugNode(this.space);
+		// this.addChild(this._debugNode, 10);
 	},
 	/**
 	 * 初始化方法
@@ -37,6 +40,7 @@ var AnimationLayer = cc.Layer.extend({
 		// 用一个持续重复动作封装该动画
 		this.runingAction = new cc.RepeatForever(new cc.Animate(animation));
 		
+		// 将精灵添加到物理层
 		//1. create PhysicsSprite with a sprite frame name
 		this.sprite = new cc.PhysicsSprite("#runner0.png");
 		var contentSize = this.sprite.getContentSize();
@@ -78,5 +82,9 @@ var AnimationLayer = cc.Layer.extend({
 		spritRuner.runAction(new cc.Sequence(actionTo));
 		this.addChild(spritRuner);
 		**/
+	},
+	
+	getEyeX: function(){
+		return this.sprite.getPositionX() - g_runnerStartX;
 	}
 });
