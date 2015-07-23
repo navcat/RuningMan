@@ -17,6 +17,8 @@
         "src/BackgroundLayer.js",
         "src/StatusLayer.js",
         "src/PlayScene.js",
-        "src/globals.js"
+        "src/globals.js",
+        "src/coin.js",
+        "src/rock.js"
     ]
 }

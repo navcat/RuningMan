@@ -4,9 +4,13 @@
 var PlayScene = cc.Scene.extend({
 	space:null,   // 物理边界
 	gameLayer: null,
+	shapesToRemove :[],
 	onEnter: function(){
 		this._super();
 		
+		this.shapesToRemove = [];
+
+		// 初始化物理层
 		this.initPhysics();
 		this.gameLayer = new cc.Layer();
 		
@@ -19,7 +23,7 @@ var PlayScene = cc.Scene.extend({
 		*/
 		/// 方式二： 从TiledMap 添加
 		// 添加背景层
-		this.gameLayer.addChild(new RuningBgLayer(), 0, TagOfLayer.BackGround);
+		this.gameLayer.addChild(new RuningBgLayer(this.space), 0, TagOfLayer.BackGround);
 		// 添加动画层
 		this.gameLayer.addChild(new AnimationLayer(this.space), 0, TagOfLayer.Animation);
 		this.addChild(this.gameLayer);
@@ -47,6 +51,21 @@ var PlayScene = cc.Scene.extend({
 				cp.v(4294967295, g_groundHeight),// MAX INT:4294967295
 				0);// thickness of wall
 		this.space.addStaticShape(wallBottom);
+		
+		// 设置小花栗鼠CollisionHandler
+		this.space.addCollisionHandler(SpriteTag.runner, SpriteTag.coin,
+				this.collisionCoinBegin.bind(this), null, null, null);
+		this.space.addCollisionHandler(SpriteTag.runner, SpriteTag.rock,
+				this.collisionRockBegin.bind(this), null, null, null);
+	},
+	collisionCoinBegin:function (arbiter, space) {
+		var shapes = arbiter.getShapes();
+		// shapes[0] is runner
+		this.shapesToRemove.push(shapes[1]);
+	},
+
+	collisionRockBegin:function (arbiter, space) {
+		cc.log("==game over");
 	},
 	update:function (dt) {
 		// chipmunk step
@@ -57,5 +76,12 @@ var PlayScene = cc.Scene.extend({
 		var eyeX = animationLayer.getEyeX();
 		
 		this.gameLayer.setPosition(cc.p(-eyeX, 0));
+		
+		// 模拟cpSpaceAddPostStepCallback
+		for(var i = 0; i < this.shapesToRemove.length; i++) {
+			var shape = this.shapesToRemove[i];
+			this.gameLayer.getChildByTag(TagOfLayer.BackGround).removeObjectByShape(shape);
+		}
+		this.shapesToRemove = [];
 	}
 });

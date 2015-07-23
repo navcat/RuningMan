@@ -5,9 +5,11 @@ var res = {
 	PlayBG_png  : "res/PlayBG.png",     // 跑步背景
 	Runner_png  : "res/running.png",		// 奔跑者
 	Running_plist : "res/running.plist", 	// 奔跑者
-	map_png: "res/map.png",
+	map_png: "res/map.png",					// TiledMAP
 	map00_tmx: "res/map00.tmx",
-	map01_tmx: "res/map01.tmx"
+	map01_tmx: "res/map01.tmx",
+	background_png :"res/background.png",    // 金币及岩石
+	background_plist : "res/background.plist"
 };
 
 var g_resources = [];

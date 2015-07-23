@@ -10,6 +10,8 @@ var AnimationLayer = cc.Layer.extend({
 	sprite: null,
 	space: null,    // 物理空间
 	runingAction: null,
+	body: null,
+	shape: null,
 	/**
 	 * 构造方法
 	 * @param space 物理空间 (单例：即整个游戏使用同一个物理空间)
@@ -20,8 +22,8 @@ var AnimationLayer = cc.Layer.extend({
 		this.init();
 		
 		// 显示调试信息
-		// this._debugNode = new cc.PhysicsDebugNode(this.space);
-		// this.addChild(this._debugNode, 10);
+		 this._debugNode = new cc.PhysicsDebugNode(this.space);
+		 this.addChild(this._debugNode, 10);
 	},
 	/**
 	 * 初始化方法
@@ -70,6 +72,8 @@ var AnimationLayer = cc.Layer.extend({
 		
 		this.sprite.runAction(this.runingAction);
 		this.spriteSheet.addChild(this.sprite);
+		
+		this.scheduleUpdate();
 
 		/**
 		// 方式二：从缓存添加
