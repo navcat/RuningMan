@@ -87,17 +87,16 @@ var PlayScene = cc.Scene.extend({
 		// chipmunk step
 		this.space.step(dt);
 		
-		// 获取动画层
-		var animationLayer = this.gameLayer.getChildByTag(TagOfLayer.Animation);
-		var eyeX = animationLayer.getEyeX();
-		
-		this.gameLayer.setPosition(cc.p(-eyeX, 0));
-		
 		// 模拟cpSpaceAddPostStepCallback
 		for(var i = 0; i < this.shapesToRemove.length; i++) {
 			var shape = this.shapesToRemove[i];
 			this.gameLayer.getChildByTag(TagOfLayer.BackGround).removeObjectByShape(shape);
 		}
 		this.shapesToRemove = [];
+		// 获取动画层
+		var animationLayer = this.gameLayer.getChildByTag(TagOfLayer.Animation);
+		var eyeX = animationLayer.getEyeX();
+		
+		this.gameLayer.setPosition(cc.p(-eyeX, 0));
 	}
 });

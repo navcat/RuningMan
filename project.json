@@ -20,6 +20,7 @@
         "src/globals.js",
         "src/coin.js",
         "src/rock.js",
-        "src/GameOverLayer.js"
+        "src/GameOverLayer.js",
+        "src/SimpleRecognizer.js"
     ]
 }

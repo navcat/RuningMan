@@ -142,4 +142,4 @@ var RuningBgLayer = cc.Layer.extend({
 		// 实时检测和更新地图
 		this.checkAndReload(eyeX);
 	}
-})
+});
