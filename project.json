@@ -19,6 +19,7 @@
         "src/PlayScene.js",
         "src/globals.js",
         "src/coin.js",
-        "src/rock.js"
+        "src/rock.js",
+        "src/GameOverLayer.js"
     ]
 }

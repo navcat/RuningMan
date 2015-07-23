@@ -58,14 +58,30 @@ var PlayScene = cc.Scene.extend({
 		this.space.addCollisionHandler(SpriteTag.runner, SpriteTag.rock,
 				this.collisionRockBegin.bind(this), null, null, null);
 	},
+	/**
+	 * 碰撞到金币，增加金币
+	 * @param arbiter
+	 * @param space
+	 */
 	collisionCoinBegin:function (arbiter, space) {
 		var shapes = arbiter.getShapes();
 		// shapes[0] is runner
 		this.shapesToRemove.push(shapes[1]);
+		
+		// 增加金币
+		var statusLayer = this.getChildByTag(TagOfLayer.Status);
+		statusLayer.addCoin(1);
 	},
 
+	/**
+	 * 当玩家碰撞到岩石时，游戏结束
+	 * @param arbiter
+	 * @param space
+	 */
 	collisionRockBegin:function (arbiter, space) {
 		cc.log("==game over");
+		cc.director.pause();
+		this.addChild(new GameOverLayer());
 	},
 	update:function (dt) {
 		// chipmunk step

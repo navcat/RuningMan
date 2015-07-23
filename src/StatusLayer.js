@@ -27,5 +27,19 @@ var StatusLayer = cc.Layer.extend({
 		this.labelMeter.setColor(cc.color(255, 255, 255, 1));
 		this.labelMeter.setPosition(cc.p(winSize.width-70,  winSize.height - 20));
 		this.addChild(this.labelMeter);
+	},
+	/**
+	 * 增加金币
+	 * @param num
+	 */
+	addCoin:function (num) {
+		this.coins += num;
+		this.labelCoin.setString("Coins:" + this.coins);
+	},
+	/**
+	 * 更新跑步距离
+	 */
+	updateMeter:function (px) {
+		this.labelMeter.setString(parseInt(px / 10) + "M");
 	}
 });
