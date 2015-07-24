@@ -12,15 +12,15 @@
     ],
     "jsList":[
         "src/resource.js",
-        "src/MenuScene.js",
-        "src/AnimationLayer.js",
-        "src/BackgroundLayer.js",
-        "src/StatusLayer.js",
-        "src/PlayScene.js",
-        "src/globals.js",
-        "src/coin.js",
-        "src/rock.js",
-        "src/GameOverLayer.js",
-        "src/SimpleRecognizer.js"
+        "src/app.js",
+        "src/gamePlay/layer/AnimationLayer.js",
+        "src/gamePlay/layer/BackgroundLayer.js",
+        "src/gamePlay/layer/StatusLayer.js",
+        "src/gamePlay/scene/PlayScene.js",
+        "src/gamePlay/globals.js",
+        "src/gamePlay/classes/coin.js",
+        "src/gamePlay/classes/rock.js",
+        "src/gamePlay/classes/SimpleRecognizer.js",
+        "src/gameOver/layer/GameOverLayer.js"
     ]
 }
