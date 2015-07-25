@@ -2,9 +2,9 @@
  * 跑步场景
  */
 var PlayScene = cc.Scene.extend({
-	space:null,   // 物理边界
+	space: null,   // 物理边界
 	gameLayer: null,
-	shapesToRemove :[],
+	shapesToRemove: [],
 	onEnter: function(){
 		this._super();
 		
@@ -65,6 +65,8 @@ var PlayScene = cc.Scene.extend({
 	 */
 	collisionCoinBegin:function (arbiter, space) {
 		var shapes = arbiter.getShapes();
+		cc.log('00000000000000')
+		cc.log(space)
 		// shapes[0] is runner
 		this.shapesToRemove.push(shapes[1]);
 		

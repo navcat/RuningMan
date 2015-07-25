@@ -8,6 +8,7 @@
 /frameworks
 /runtime
 /tools
+/publish
 
 # settings文件
 .settings/
