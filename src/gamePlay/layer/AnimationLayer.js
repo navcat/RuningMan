@@ -1,4 +1,4 @@
-//define enum for runner status
+// 跑步小人的运动状态
 if(typeof RunnerStat == "undefined") {
 	var RunnerStat = {};
 	RunnerStat.running = 0;
@@ -22,7 +22,7 @@ var AnimationLayer = cc.Layer.extend({
 	jumpDownAction:null,
 	
 	recognizer:null,
-	stat:RunnerStat.running,// init with running status
+	stat:RunnerStat.running,// 初始化跑步小人运动状态为running
 	/**
 	 * 构造方法
 	 * @param space 物理空间 (单例：即整个游戏使用同一个物理空间)
@@ -164,6 +164,7 @@ var AnimationLayer = cc.Layer.extend({
 		this.jumpDownAction = new cc.Animate(animation);
 		this.jumpDownAction.retain();
 	},
+	
 	onTouchBegan:function(touch, event) {
 		var pos = touch.getLocation();
 		event.getCurrentTarget().recognizer.beginPoint(pos.x, pos.y);
@@ -200,8 +201,7 @@ var AnimationLayer = cc.Layer.extend({
 	},
 	/**
 	 * 既然物理body将要不断地向右移动，精灵会和物理body同步它的位置。
-		过了一段时间后，玩家会跑到屏幕外面，就像上一篇教程说的那样。
-		所以我们需要在每帧移动游戏层的x坐标，让它保持在可见的范围内。
+	 * 过了一段时间后，玩家会跑到屏幕外面，所以我们需要在每帧移动游戏层的x坐标，让它保持在可见的范围内。
 	 * @returns int x坐标
 	 */
 	getEyeX: function(){
@@ -217,13 +217,13 @@ var AnimationLayer = cc.Layer.extend({
 		this._super();
 	},
 	update: function(){
-		// update meter
+		// 更新跑步距离
 		var statusLayer = this.getParent().getParent().getChildByTag(TagOfLayer.Status);
 		statusLayer.updateMeter(this.sprite.getPositionX() - g_runnerStartX);
 		
-		//in the update method of AnimationLayer
-		// check and update runner stat
+		//更新跑步者的状态
 		var vel = this.body.getVel();
+		// 向上跳跃
 		if (this.stat == RunnerStat.jumpUp) {
 			if (vel.y < 0.1) {
 				this.stat = RunnerStat.jumpDown;
