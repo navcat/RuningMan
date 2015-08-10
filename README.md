@@ -2,7 +2,7 @@
 本游戏基于cocos2d-js-v3.6.1进行开发，仅供学习交流。
 
 ## Q/A
-  联系方式：yima1006@foxmail.com
+  联系方式：dubspace@foxmail.com
 
 ## License
 The MIT License (MIT)
